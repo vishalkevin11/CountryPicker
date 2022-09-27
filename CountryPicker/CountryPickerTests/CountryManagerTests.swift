@@ -42,6 +42,10 @@ class CountryPickerTests: XCTestCase {
         XCTAssertEqual(countryManager.currentCountry!.countryCode, Locale.current.regionCode!)
     }
     
+    func test_secondaryCountryCode() {
+        XCTAssertEqual(countryManager.secondaryCountry()!.countryCode, Locale.current.regionCode!)
+    }
+    
     func test_contriesLoadedIncorrect_order() {
         let firstCountry = countryManager.countries[0].countryName
         let secondCountry = countryManager.countries[1].countryName

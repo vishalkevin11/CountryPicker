@@ -75,7 +75,6 @@ open class CountryManager: CountryListDataSource {
         return Country(countryCode: countryCode)
     }
     
-    
     public var lastCountrySelected: Country?
     
     /// Default country filter option
@@ -209,6 +208,22 @@ public extension CountryManager {
     func clearAllFilters() {
         filters.removeAll()
         filters.insert(defaultFilter) // Set default filter option
+    }
+}
+
+
+// MARK: - Update Default Country Selection Methods
+public extension CountryManager {
+    
+    /// Requests for a `Country` instance based on country code
+    ///
+    /// - Parameter code: A country code
+    
+    func secondaryCountry(_ countryCode: String? = Locale.current.regionCode) -> Country? {
+        guard let countryCode = countryCode else {
+            return nil
+        }
+        return Country(countryCode: countryCode)
     }
 }
 

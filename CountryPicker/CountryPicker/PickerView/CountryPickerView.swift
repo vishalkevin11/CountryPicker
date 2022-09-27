@@ -51,7 +51,7 @@ open class CountryPickerView: UIPickerView {
     required public init?(coder: NSCoder) {
         super.init(coder: coder)
         self.allCountryList = CountryManager.shared.countries
-        self.selectedCountry = CountryManager.shared.currentCountry
+        self.selectedCountry = CountryManager.shared.secondaryCountry()
         configure()
     }
     
@@ -88,7 +88,7 @@ open class CountryPickerView: UIPickerView {
         self.countryCodes = codes
     }
     
-    public static func loadPickerView(allCountryList: [Country] = CountryManager.shared.countries, selectedCountry: Country? = CountryManager.shared.currentCountry, didSelectCountry: @escaping OnSelectCountryCallback) -> CountryPickerView {
+    public static func loadPickerView(allCountryList: [Country] = CountryManager.shared.countries, selectedCountry: Country? = CountryManager.shared.secondaryCountry(), didSelectCountry: @escaping OnSelectCountryCallback) -> CountryPickerView {
         let countryPicker = CountryPickerView(allCountryList: allCountryList, selectedCountry: selectedCountry)
         countryPicker.didSelectCountryCallback = didSelectCountry
         return countryPicker
